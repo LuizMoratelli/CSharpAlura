@@ -1,0 +1,7 @@
+C:\Users\gamep\source\repos\BankByte\BankByte\bin\Debug\BankByte.exe.config
+C:\Users\gamep\source\repos\BankByte\BankByte\bin\Debug\BankByte.exe
+C:\Users\gamep\source\repos\BankByte\BankByte\bin\Debug\BankByte.pdb
+C:\Users\gamep\source\repos\BankByte\BankByte\obj\Debug\BankByte.csprojAssemblyReference.cache
+C:\Users\gamep\source\repos\BankByte\BankByte\obj\Debug\BankByte.csproj.CoreCompileInputs.cache
+C:\Users\gamep\source\repos\BankByte\BankByte\obj\Debug\BankByte.exe
+C:\Users\gamep\source\repos\BankByte\BankByte\obj\Debug\BankByte.pdb

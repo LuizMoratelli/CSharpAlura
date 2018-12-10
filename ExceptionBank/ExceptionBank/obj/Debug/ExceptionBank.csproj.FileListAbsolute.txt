@@ -1,0 +1,7 @@
+C:\Users\gamep\source\repos\ExceptionBank\ExceptionBank\bin\Debug\ExceptionBank.exe.config
+C:\Users\gamep\source\repos\ExceptionBank\ExceptionBank\bin\Debug\ExceptionBank.exe
+C:\Users\gamep\source\repos\ExceptionBank\ExceptionBank\bin\Debug\ExceptionBank.pdb
+C:\Users\gamep\source\repos\ExceptionBank\ExceptionBank\obj\Debug\ExceptionBank.csprojAssemblyReference.cache
+C:\Users\gamep\source\repos\ExceptionBank\ExceptionBank\obj\Debug\ExceptionBank.csproj.CoreCompileInputs.cache
+C:\Users\gamep\source\repos\ExceptionBank\ExceptionBank\obj\Debug\ExceptionBank.exe
+C:\Users\gamep\source\repos\ExceptionBank\ExceptionBank\obj\Debug\ExceptionBank.pdb

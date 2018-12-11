@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace ByteBankDll.Modelos.Funcionarios
 {
     // Se não faz sentido instanciar a classe e apenas serve de base ela será abstrata
+    // quando não especificamos um pai deriva do : object
     public abstract class Funcionario
     {
         public string Nome { get; set; }

@@ -116,5 +116,11 @@ namespace ByteBankDll.Modelos
 
             contaDestino.Depositar(valor);
         }
+
+        public override string ToString() {
+            //return "Numero " + Numero + ", Agencia " + Agencia;
+            // Com $ no começo da string pode-se usar {variaveis} 
+            return $"Numero {Numero}, Agencia {Agencia}";
+        }
     }
 }

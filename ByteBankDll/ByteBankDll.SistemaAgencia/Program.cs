@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 // Referencias >> Adicionar >> Projetos >> Projeto;
 using ByteBankDll.Modelos;
@@ -23,6 +24,13 @@ namespace ByteBankDll.SistemaAgencia
             ExtratatorValorDeArgumentosURL extrator = new ExtratatorValorDeArgumentosURL("pagina?url=123&numero=123");
             Console.WriteLine(extrator.GetValor("url"));
 
+            //string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]";
+            //string padrao = "[0-9]{4}[-][0-9]{4}";
+            string padrao = "[0-9]{4,5}[-]?[0-9]{4}";
+            string textoDeTeste = "Luiz 91234-1234";
+            //Console.WriteLine(Regex.IsMatch(textoDeTeste, padrao));
+            Console.WriteLine(Regex.Match(textoDeTeste, padrao));
+              
             //Console.WriteLine(argumentos);
 
             //ContaCorrente conta = new ContaCorrente(123, 133);
@@ -38,6 +46,8 @@ namespace ByteBankDll.SistemaAgencia
 
             //Console.WriteLine(mensagem);
             Console.ReadLine();
+
+            //.Equals pode verificar a igualdade de dois objetos
         }
     }
 }

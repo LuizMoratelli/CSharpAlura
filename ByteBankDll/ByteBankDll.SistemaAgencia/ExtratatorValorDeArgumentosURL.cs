@@ -29,8 +29,15 @@ namespace ByteBankDll.SistemaAgencia
         }
 
         public string GetValor(string nomeParametro) {
+            nomeParametro = nomeParametro.ToUpper();
+            string argumentoEmCaixaAlta = _argumentos.ToUpper();
+
             string termo = nomeParametro + "=";
-            int indiceTermo = _argumentos.IndexOf(termo);
+            int indiceTermo = argumentoEmCaixaAlta.IndexOf(termo);
+
+            //termo.StartsWith("https://google.com");
+            //termo.EndsWith("https://google.com");
+            //termo.Contains("https://google.com");
 
             string resultado = _argumentos.Substring(indiceTermo + termo.Length);
             int indiceEComercial = resultado.IndexOf('&');

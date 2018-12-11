@@ -11,5 +11,19 @@ namespace ByteBankDll.Modelos
         public string Nome { get; set; }
         public string CPF { get; set; }
         public string Profissao { get; set; }
+
+        public override bool Equals(object obj) {
+            // converte obj to cliente
+            //Cliente outroCliente = (Cliente) obj;
+            // Tenta ser executada se não for possível converter será nulo.
+            Cliente outroCliente = obj as Cliente;
+            
+            if (outroCliente == null)
+                return false;
+
+            return Nome == outroCliente.Nome &&
+                CPF == outroCliente.CPF &&
+                Profissao == outroCliente.Profissao;
+        }
     }
 }

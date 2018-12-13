@@ -122,5 +122,14 @@ namespace ByteBankDll.Modelos
             // Com $ no começo da string pode-se usar {variaveis} 
             return $"Numero {Numero}, Agencia {Agencia}";
         }
+
+        public override bool Equals(object obj) {
+            ContaCorrente outraConta = obj as ContaCorrente; //lança null ao inves de exception
+
+            if (outraConta == null)
+                return false;
+
+            return Numero == outraConta.Numero && Agencia == outraConta.Agencia;
+        }
     }
 }

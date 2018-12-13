@@ -14,6 +14,7 @@ namespace ByteBankDll.Modelos
 
         public override bool Equals(object obj) {
             // converte obj to cliente
+            // Tenta ser executada se não for possível converter retorna exception
             //Cliente outroCliente = (Cliente) obj;
             // Tenta ser executada se não for possível converter será nulo.
             Cliente outroCliente = obj as Cliente;

@@ -14,6 +14,35 @@ namespace ByteBankDll.SistemaAgencia
     class Program
     {
         static void Main(string[] args) {
+            // Lista genérica
+            Lista<int> idades = new Lista<int>();
+
+
+
+            ListaDeContaCorrente lista = new ListaDeContaCorrente();
+
+            // Podendo-se passar apenas um parametro, o outro fica o valor padrão
+            lista.MetodoTeste(b: 5);
+            
+        }
+
+        static void Array() {
+            // Sintatic Sugar de array
+            ContaCorrente[] contas = new ContaCorrente[] {
+                new ContaCorrente(123, 123),
+                new ContaCorrente(234, 234),
+                new ContaCorrente(345, 345),
+            };
+
+            for (int i = 0; i < contas.Length; i++) {
+                if (contas[i] != null)
+                    Console.WriteLine($"Conta: {contas[i].Numero}, Agencia: {contas[i].Agencia}, Saldo: {contas[i].Saldo}");
+            }
+
+            Console.ReadLine();
+        }
+
+        static void TestaURL() {
             string url = "pagina?argumentos";
 
             int indiceInterrogacao = url.IndexOf('?');

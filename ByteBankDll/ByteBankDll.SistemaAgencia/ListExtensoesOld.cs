@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ByteBankDll.SistemaAgencia
 {
-    public static class ListExtensoes
+    public static class ListExtensoesOld
     {
         // Uma classe static só pode ter métodos static
         // Método de Extensão

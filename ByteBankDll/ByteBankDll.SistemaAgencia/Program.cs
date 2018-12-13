@@ -17,12 +17,18 @@ namespace ByteBankDll.SistemaAgencia
             // Lista genérica
             Lista<int> idades = new Lista<int>();
 
-
+            // Inferencia de tipo de variável
+            Lista<GerenteDeConta> gerenciador = new Lista<GerenteDeConta>();
+            // É igual à
+            var gerenciador2 = new Lista<GerenteDeConta>();
 
             ListaDeContaCorrente lista = new ListaDeContaCorrente();
 
             // Podendo-se passar apenas um parametro, o outro fica o valor padrão
             lista.MetodoTeste(b: 5);
+
+            // Para comparar ou usar .Sort em classes precisa implementar a interface IComparable
+            // no .Sort() da pra passar um new Comparable
             
         }
 

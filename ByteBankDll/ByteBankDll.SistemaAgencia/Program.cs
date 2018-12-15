@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 // Referencias >> Adicionar >> Projetos >> Projeto;
 using ByteBankDll.Modelos;
 using ByteBankDll.Modelos.Funcionarios;
+using ByteBankDll.SistemaAgencia.Extensoes;
 using Humanizer;
 
 namespace ByteBankDll.SistemaAgencia
@@ -16,6 +17,35 @@ namespace ByteBankDll.SistemaAgencia
         static void Main(string[] args) {
             // Lista genérica
             Lista<int> idades = new Lista<int>();
+
+            //List<ContaCorrente> listaContas = new List<ContaCorrente>();
+            var listaContas = new List<ContaCorrente>();
+            listaContas.AdicionarVarios(
+                new ContaCorrente(1, 3),
+                new ContaCorrente(4, 2),
+                new ContaCorrente(2, 1)
+            );
+
+            //IOrderedEnumerable<ContaCorrente> contasOrdenadas = listaContas.OrderBy(conta => conta.Numero);
+            // Mas não trata o null
+            // x => y expressão lambda
+            //var contasOrdenadas = listaContas.OrderBy(conta => conta.Numero);
+            var contasOrdenadas = listaContas.OrderBy(conta => { 
+                if (conta == null) 
+                    return int.MaxValue;
+
+                return conta.Numero; 
+            });
+
+            var contasOrdenadas2 = listaContas
+                .Where(conta => conta != null)
+                .OrderBy(conta => conta.Numero);
+
+
+            foreach (var conta in contasOrdenadas) {
+                if (conta != null)
+                    Console.WriteLine(conta.Numero);
+            }
 
             // Inferencia de tipo de variável
             Lista<GerenteDeConta> gerenciador = new Lista<GerenteDeConta>();
@@ -29,7 +59,10 @@ namespace ByteBankDll.SistemaAgencia
 
             // Para comparar ou usar .Sort em classes precisa implementar a interface IComparable
             // no .Sort() da pra passar um new Comparable
-            
+
+            // IOrderedEnumerable<ContaCorrente> listaOrdenada = contas.OrderBy(conta => conta.Numero);
+            // Foreach na listaOrdenada
+            Console.ReadLine();
         }
 
         static void Array() {

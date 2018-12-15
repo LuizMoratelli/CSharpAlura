@@ -15,6 +15,11 @@ namespace ByteBankDll.SistemaAgencia
     class Program
     {
         static void Main(string[] args) {
+            
+            Console.ReadLine();
+        }
+
+        static void LinqLambda() {
             // Lista genérica
             Lista<int> idades = new Lista<int>();
 
@@ -62,7 +67,6 @@ namespace ByteBankDll.SistemaAgencia
 
             // IOrderedEnumerable<ContaCorrente> listaOrdenada = contas.OrderBy(conta => conta.Numero);
             // Foreach na listaOrdenada
-            Console.ReadLine();
         }
 
         static void Array() {

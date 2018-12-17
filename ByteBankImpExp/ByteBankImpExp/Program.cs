@@ -13,8 +13,10 @@ namespace ByteBankImpExp
     {
         static void Main(string[] args)
         {
-            EscritaBinaria();
-            LeituraBinaria();
+            //EscritaBinaria();
+            //LeituraBinaria();
+
+            UsarStreamEntrada();
 
             CriarArquivoStreamWritter();
 
@@ -23,6 +25,15 @@ namespace ByteBankImpExp
             {
 
             }
+
+            var nome = Console.ReadLine();
+
+            // Não necessário utilizar o StreamReader
+            // Le o arquivo inteiro de uma vez, CUIDADO, as vezes melhor usar o StreamReader
+            var linhas = File.ReadAllLines("contas.txt");
+
+            // Escrita simples, para coisas pequenas
+            File.WriteAllText("Testando file", "testeWrite.txt");
 
             Console.ReadLine();
         }

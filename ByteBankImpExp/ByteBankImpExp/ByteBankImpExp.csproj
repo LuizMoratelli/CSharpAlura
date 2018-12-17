@@ -49,6 +49,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamBinario.cs" />
+    <Compile Include="UsandoStreamConsole.cs" />
     <Compile Include="UsandoStreamReader.cs" />
   </ItemGroup>
   <ItemGroup>

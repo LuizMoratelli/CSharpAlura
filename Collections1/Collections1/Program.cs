@@ -38,6 +38,40 @@ namespace Collections1
 
             aulas[0] = "Trabalhando com Arrays";
 
+            // Primeiro match
+            Console.WriteLine($"Aula modelando está no índice " + Array.IndexOf(aulas, aulaModelando));
+            // Ultimo match
+            Console.WriteLine(Array.LastIndexOf(aulas, aulaModelando));
+
+            // Array invertido
+            // Idempotente (se executar 2x volta ao normal)
+            Array.Reverse(aulas);
+            Imprimir(aulas);
+
+            // Redimensionar o array
+            // Copia interna invisível
+            Array.Resize(ref aulas, 2);
+            Imprimir(aulas);
+
+            Array.Resize(ref aulas, 3);
+            // 2 = número mágico
+            aulas[aulas.Length - 1] = "Conclusão";
+            Imprimir(aulas);
+
+            Array.Sort(aulas);
+            Imprimir(aulas);
+
+            string[] copia = new string[2];
+            // Copia os 2 ultimos elementos para o copia
+            Array.Copy(aulas, 1, copia, 0, 2);
+
+            string[] clone = aulas.Clone() as string[];
+            Imprimir(clone);
+
+            // Limpa os 2 ultimos elementos
+            Array.Clear(clone, 1, 2);
+            Imprimir(clone);
+
             Console.ReadLine();
         }
 

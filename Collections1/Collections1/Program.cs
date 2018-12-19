@@ -10,6 +10,121 @@ namespace Collections1
     {
         static void Main(string[] args)
         {
+            //var aulaIntro = new Aula("Introdução às Coleções", 20);
+            //var aulaModelando = new Aula("Modelando a Classe Aula", 18);
+            //var aulaSets = new Aula("Trabalhando com Conjuntos", 16);
+
+            //var aulas = new List<Aula>();
+            //aulas.AddMultiple(aulaIntro, aulaModelando, aulaSets);
+
+            //aulas.Sort();
+
+            //ImprimirAulas(aulas);
+
+            //aulas.Sort((este, outro) => este.Tempo.CompareTo(outro.Tempo));
+
+            Curso csharpColecoes = new Curso("C# Collections", "Marcelo Oliveira");
+            // Exposição indecente, code smell.
+            csharpColecoes.Adicionar(new Aula("Trabalhando com Listas", 21));
+            csharpColecoes.Adicionar(new Aula("Criando uma aula", 20));
+            csharpColecoes.Adicionar(new Aula("Modelando com Coleções", 19));
+
+            //csharpColecoes.Aulas.Sort();
+            var aulasCopiadas = new List<Aula>(csharpColecoes.Aulas);
+            aulasCopiadas.Sort();
+
+            ImprimirAulas(csharpColecoes.Aulas);
+            ImprimirAulas(aulasCopiadas);
+
+            Console.WriteLine(csharpColecoes.TempoTotal);
+            Console.WriteLine(csharpColecoes);
+
+            Console.ReadLine();
+        }
+
+        private static void ImprimirAulas(IList<Aula> aulas)
+        {
+            foreach (var aula in aulas)
+            {
+                Console.WriteLine(aula);
+            }
+        }
+
+        private static void ListProgram()
+        {
+            string aulaIntro = "Introdução às Coleções";
+            string aulaModelando = "Modelando a Classe Aula";
+            string aulaSets = "Trabalhando com Conjuntos";
+
+            //var listaAulas = new List<string>()
+            //{
+            //    aulaIntro,
+            //    aulaModelando,
+            //    aulaSets
+            //};
+
+            var listaAulas = new List<string>();
+
+            listaAulas.Add(aulaIntro);
+            listaAulas.Add(aulaModelando);
+            listaAulas.Add(aulaSets);
+
+            imprimirLista(listaAulas);
+
+            Console.WriteLine($"A primeira aula é: {listaAulas.First()}");
+            Console.WriteLine($"A última aula é: {listaAulas.Last()}");
+
+            //Console.WriteLine($"Primeira aula 'Trabalhando' é: " +
+            //    $"{listaAulas.First(aula => aula.Contains("Trabalhando"))}");
+
+            // Trata se não tiver nenhum que contém para não dar exceção
+            Console.WriteLine($"Primeira aula 'Trabalhando' é: " +
+                $"{listaAulas.FirstOrDefault(aula => aula.Contains("Trabalhando"))}");
+
+            Console.WriteLine($"A última aula 'Trabalhando' é:" +
+                $"{listaAulas.Last(aula => aula.Contains("Aula"))}");
+
+            // Inverte a ordem das aulas
+            listaAulas.Reverse();
+
+            // indice para remover
+            listaAulas.RemoveAt(listaAulas.Count - 1);
+
+            // Organiza em ordem alfabética
+            listaAulas.Sort();
+
+            // Copia os 2 ultimos elementos
+            var listaTemp = listaAulas.GetRange(listaAulas.Count - 2, 2);
+            imprimirLista(listaTemp);
+
+            // clonagem
+            var listaClone = new List<string>(listaAulas);
+            imprimirLista(listaClone);
+
+            // Remove os 2 ultimos 
+            listaClone.RemoveRange(listaClone.Count - 2, 2);
+        }
+
+        private static void imprimirLista(List<string> aulas)
+        {
+            //foreach (var aula in aulas)
+            //{
+            //    Console.WriteLine(aula);
+            //}
+
+            //for (int i = 0; i < aulas.Count; i++)
+            //{
+            //    Console.WriteLine(aulas[i]);
+            //}
+
+            aulas.ForEach(aula => 
+            {
+                Console.WriteLine(aula);
+            });
+        }
+        
+        private static void ArrayProgram()
+        {
             string aulaIntro = "Introdução às Coleções";
             string aulaModelando = "Modelando a Classe Aula";
             string aulaSets = "Trabalhando com Conjuntos";
@@ -71,8 +186,6 @@ namespace Collections1
             // Limpa os 2 ultimos elementos
             Array.Clear(clone, 1, 2);
             Imprimir(clone);
-
-            Console.ReadLine();
         }
 
         // Ctrl + . para transformar seleção em método

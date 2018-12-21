@@ -17,6 +17,13 @@ namespace Collections1
             get { return new ReadOnlyCollection<Aula>(aulas); }
         }
 
+        private ISet<Aluno> alunos = new HashSet<Aluno>();
+        public IList<Aluno> Alunos {
+            get {
+                return new ReadOnlyCollection<Aluno>(alunos.ToList());
+            }
+        }
+
         private string nome;
         private string instrutor;
 
@@ -30,6 +37,11 @@ namespace Collections1
         public string Nome {
             get { return nome; }
             set { nome = value; }
+        }
+
+        internal void Matricular(Aluno aluno)
+        {
+            alunos.Add(aluno);
         }
 
         public string Instrutor {

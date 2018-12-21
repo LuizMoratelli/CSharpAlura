@@ -10,6 +10,65 @@ namespace Collections1
     {
         static void Main(string[] args)
         {
+            Curso csharpColecoes = new Curso("C# Coleções", "Marcelo Oliveira");
+            csharpColecoes.Adicionar(new Aula("Trabalhando com Listas", 21));
+            csharpColecoes.Adicionar(new Aula("Criando uma Aula", 20));
+            csharpColecoes.Adicionar(new Aula("Modelando com Coleções", 24));
+
+            var a1 = new Aluno("Luiz", 1);
+            var a2 = new Aluno("Ike", 2);
+            var a3 = new Aluno("Camila", 3);
+
+            csharpColecoes.Matricular(a1);
+            csharpColecoes.Matricular(a2);
+            csharpColecoes.Matricular(a3);
+
+            Console.WriteLine("Alunos matriculados");
+            foreach (var aluno in csharpColecoes.Alunos)
+            {
+                Console.WriteLine(aluno.Nome);
+            }
+        }
+
+        private static void ImplementandoHash()
+        {
+            // Set de Alunos
+            // Conjunto
+            ISet<string> alunos = new HashSet<string>();
+            alunos.Add("Teste");
+            alunos.Add("Rafael");
+            alunos.Add("Gustavo");
+
+            Console.WriteLine(alunos);
+            Console.WriteLine(string.Join(",", alunos));
+
+            alunos.Add("Camila");
+            alunos.Add("Luiz");
+
+            alunos.Remove("Teste");
+            alunos.Add("Marcelo");
+
+            Console.WriteLine(string.Join(",", alunos));
+
+            // Conjunto não garante a posição
+            alunos.Add("Marcelo");
+            // Evita a duplicidade, não faz nada
+
+            // Vantagem: mais rápido
+            // Não vare do primeiro ao ultimo, utiliza a tabela de espalhamento
+            // Escalável em performance, mas consome mais memória
+
+            // Para ordenar basta colocar em lista
+            List<string> alunosEmLista = new List<string>(alunos);
+            alunosEmLista.Sort();
+
+            Console.WriteLine(string.Join(", ", alunosEmLista));
+
+            Console.ReadLine();
+        }
+
+        private static void TestesAulas()
+        {
             //var aulaIntro = new Aula("Introdução às Coleções", 20);
             //var aulaModelando = new Aula("Modelando a Classe Aula", 18);
             //var aulaSets = new Aula("Trabalhando com Conjuntos", 16);

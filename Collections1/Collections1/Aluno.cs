@@ -31,5 +31,21 @@ namespace Collections1
         {
             return $"[Nome: {Nome}, Matrícula: {numeroMatricula}]";
         }
+
+        public override bool Equals(object obj)
+        {
+            Aluno outro = obj as Aluno;
+
+            if (outro == null)
+                return false;
+
+            return this.nome.Equals(outro.nome);
+        }
+
+        // Sempre que implementa Equals também deve implementar
+        public override int GetHashCode()
+        {
+            return this.nome.GetHashCode();
+        }
     }
 }

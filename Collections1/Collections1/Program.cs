@@ -28,6 +28,25 @@ namespace Collections1
             {
                 Console.WriteLine(aluno.Nome);
             }
+
+            Console.WriteLine($"O aluno a1 {a1.Nome} está matriculado?");
+            Console.WriteLine(csharpColecoes.EstaMatriculado(a1));
+
+            Console.WriteLine($"Qual o aluno da matrícula 1?");
+            try
+            {
+                Console.WriteLine(csharpColecoes.BuscaMatriculado(1));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+            }
+
+            var a4 = new Aluno("Teste", 4);
+            csharpColecoes.SubstituiAluno(a4);
+
+            Console.ReadLine();
         }
 
         private static void ImplementandoHash()

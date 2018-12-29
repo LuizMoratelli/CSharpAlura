@@ -9,6 +9,9 @@ namespace Collections1
 {
     public class Curso
     {
+        // Implementando Dicionario
+        private IDictionary<int, Aluno> dicionarioAlunos = new Dictionary<int, Aluno>();
+
         //propfull
         private IList<Aula> aulas;
 
@@ -42,11 +45,40 @@ namespace Collections1
         internal void Matricular(Aluno aluno)
         {
             alunos.Add(aluno);
+            this.dicionarioAlunos.Add(aluno.NumeroMatricula, aluno);
         }
 
         public string Instrutor {
             get { return instrutor; }
             set { instrutor = value; }
+        }
+
+        // Sem dicionaio
+        //internal string BuscaMatriculado(int numeroMatricula)
+        //{
+        //    foreach (var aluno in alunos)
+        //    {
+        //        if (aluno.NumeroMatricula == numeroMatricula)
+        //            return aluno.Nome;
+        //    }
+
+        //    throw new Exception($"Matrícula não encontrada: {numeroMatricula}");
+        //}
+
+        // Com dicionario
+        public Aluno BuscaMatriculado(int numeroMatricula)
+        {
+            // Não seguro
+            //return dicionarioAlunos[numeroMatricula];
+            // Seguro (trata se não tem)
+            Aluno aluno = null;
+            dicionarioAlunos.TryGetValue(numeroMatricula, out aluno);
+            return aluno;
+        }
+
+        public void SubstituiAluno(Aluno aluno)
+        {
+            this.dicionarioAlunos[aluno.NumeroMatricula] = aluno;
         }
 
         internal void Adicionar(Aula aula)
@@ -74,6 +106,11 @@ namespace Collections1
         public override string ToString()
         {
             return $"Curso: {Nome}, Tempo: {TempoTotal}, Aulas: {String.Join(",", aulas)}";
+        }
+
+        public bool EstaMatriculado(Aluno aluno)
+        {
+            return alunos.Contains(aluno);
         }
     }
 }

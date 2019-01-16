@@ -47,6 +47,7 @@
     <Compile Include="Aula.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="ExtensaoLista.cs" />
+    <Compile Include="Navegador.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

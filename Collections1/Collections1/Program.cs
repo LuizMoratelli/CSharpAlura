@@ -8,7 +8,87 @@ namespace Collections1
 {
     class Program
     {
+        static Queue<string> pedagio = new Queue<string>();
+
         static void Main(string[] args)
+        {
+            string veiculo = "carro";
+            pedagio.Enqueue(veiculo);
+
+            veiculo = "van";
+            pedagio.Enqueue(veiculo);
+
+            pedagio.Dequeue();
+
+            // saber o proximo carro
+            Console.WriteLine(pedagio.Peek());
+
+            if (pedagio.Any())
+            {
+                pedagio.Dequeue();
+            }
+
+            foreach (var carro in pedagio)
+            {
+                Console.WriteLine(carro);
+            }
+
+            Console.ReadLine();
+        }
+
+        private static void EstudandoStack()
+        {
+            var navegador = new Navegador();
+
+            navegador.NavegarPara("google.com");
+            navegador.NavegarPara("alura.com.br");
+
+            navegador.Anterior();
+            navegador.Anterior();
+            navegador.Proximo();
+            navegador.Proximo();
+        }
+
+        private static void EstudandoLinkedLists()
+        {
+            List<string> frutas = new List<string>
+            {
+                "abacate", "banana", "caqui"
+            };
+
+            foreach (var fruta in frutas)
+            {
+                Console.WriteLine(fruta);
+            }
+
+            LinkedList<string> dias = new LinkedList<string>();
+
+            var d4 = dias.AddFirst("Quarta");
+
+            var d2 = dias.AddBefore(d4, "Segunda");
+
+            var d3 = dias.AddAfter(d2, "Terça");
+
+            var d7 = dias.AddLast("Sábado");
+
+            foreach (var dia in dias)
+            {
+                Console.WriteLine(dia);
+            }
+
+            var quarta = dias.Find("Quarta");
+            dias.Remove(d4);
+            dias.Remove("Segunda");
+            dias.RemoveFirst();
+            dias.RemoveLast();
+
+            foreach (var dia in dias)
+            {
+                Console.WriteLine(dia);
+            }
+        }
+
+        private static void MatriculasColecoes()
         {
             Curso csharpColecoes = new Curso("C# Coleções", "Marcelo Oliveira");
             csharpColecoes.Adicionar(new Aula("Trabalhando com Listas", 21));
@@ -45,8 +125,6 @@ namespace Collections1
 
             var a4 = new Aluno("Teste", 4);
             csharpColecoes.SubstituiAluno(a4);
-
-            Console.ReadLine();
         }
 
         private static void ImplementandoHash()

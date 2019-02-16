@@ -8,6 +8,9 @@ namespace DesignPatterns
 {
     public class IHIT : TemplateDeImpostoCondicional
     {
+        public IHIT(Imposto outroImposto) : base(outroImposto) { }
+        public IHIT() : base() { }
+
         protected override bool DeveUsarMaximaTaxacao(Orcamento orcamento)
         {
             return existemDoisItensComOMesmoNome(orcamento);

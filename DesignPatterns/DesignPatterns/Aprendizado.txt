@@ -12,7 +12,6 @@ Coesão da Classe = Responsabilidade exclusiva!
 //Mais Informações
 O padrão Strategy é muito útil quando temos um conjunto de algoritmos similares, e precisamos alternar entre eles em diferentes pedaços da aplicação. 
 No exemplo do vídeo, temos diferentes maneira de calcular o imposto, e precisamos alternar entre elas.
-
 O Strategy nos oferece uma maneira flexível para escrever diversos algoritmos diferentes, e de passar esses algoritmos para classes clientes que precisam deles. 
 Esses clientes desconhecem qual é o algoritmo "real" que está sendo executado, e apenas manda o algoritmo rodar. 
 Isso faz com que o código da classe cliente fique bastante desacoplado das implementações concretas de algoritmos, 
@@ -27,3 +26,7 @@ Precisa que seja implementado um retorno padrão SemDesconto para finalizar a ca
 Quando o mesmo método de várias subclasses de uma mesma superclasse/interface implementam-o de forma parecida. (Por exemplo, se tem taxação máxima faça isso se não aquilo)
 pode-se abstrair o método genérico em outra classe abstrata. (TemplateDeImpostoCondicional0)
 Diminui a implementação de código e facilita a interpretação dos ifs
+
+**Decorator**
+Possibilita passar pelo construtor um próxima subclasse da mesma classe pai para compor a um calculo (CalculoDoOutroImposto)
+Criar comportamentos complicados a partir de comportamentos simples

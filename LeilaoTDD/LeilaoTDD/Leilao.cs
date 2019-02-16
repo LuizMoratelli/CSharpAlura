@@ -15,7 +15,31 @@ namespace LeilaoTDD
 
         public void Propoe(Lance lance)
         {
-            Lances.Add(lance);
+            if (Lances.Count == 0 || PodeDarLance(lance.Usuario))
+            {
+                Lances.Add(lance);
+            }
+        }
+
+        private bool PodeDarLance(Usuario usuario)
+        {
+            return (!ultimoLanceDado().Usuario.Equals(usuario) && totalDeLancesDo(usuario) < 5);
+        }
+
+        private int totalDeLancesDo(Usuario usuario)
+        {
+            int total = 0;
+            foreach (Lance l in Lances)
+            {
+                if (l.Usuario.Equals(usuario)) total++;
+            }
+
+            return total;
+        }
+
+        private Lance ultimoLanceDado()
+        {
+            return Lances[Lances.Count - 1];
         }
     }
 }

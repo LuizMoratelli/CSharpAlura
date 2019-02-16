@@ -15,10 +15,9 @@
             QuantidadeMovimentos = 0;
         }
 
-        public void IncrementarMovimento()
-        {
-            QuantidadeMovimentos++;
-        }
+        public void IncrementarMovimento() { QuantidadeMovimentos++; }
+
+        public void DecrementarMovimento() { QuantidadeMovimentos--; }
 
         public bool ExisteMovimentosPossiveis()
         {

@@ -22,3 +22,8 @@ possibilitando assim com que esse cliente consiga trabalhar com N diferentes alg
 
 Em casos onde um teste chama o outro em determinada condição (em cadeia), por exemplo enquanto o desconto for = 0 aplica proximo desconto
 Precisa que seja implementado um retorno padrão SemDesconto para finalizar a cadeia
+
+**Template Method**
+Quando o mesmo método de várias subclasses de uma mesma superclasse/interface implementam-o de forma parecida. (Por exemplo, se tem taxação máxima faça isso se não aquilo)
+pode-se abstrair o método genérico em outra classe abstrata. (TemplateDeImpostoCondicional0)
+Diminui a implementação de código e facilita a interpretação dos ifs

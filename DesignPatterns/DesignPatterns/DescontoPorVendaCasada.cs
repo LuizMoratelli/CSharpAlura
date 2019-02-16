@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    public class DescontoPorVendaCasada : Desconto
+    public class DescontoPorVendaCasada : TemplateDeDescontoCondicional
     {
-        public Desconto Proximo { get; set; }
 
-        public double Desconta(Orcamento orcamento)
+        protected override double AplicarDescontoNo(Orcamento orcamento)
         {
-            if (AconteceuVendaCasadaEm(orcamento)) return orcamento.Valor * 0.05;
-            else return Proximo.Desconta(orcamento);
+            return orcamento.Valor * 0.05;
+        }
+
+        protected override bool DeveAplicarDescontoNo(Orcamento orcamento)
+        {
+            return AconteceuVendaCasadaEm(orcamento);
         }
 
         private bool AconteceuVendaCasadaEm(Orcamento orcamento)

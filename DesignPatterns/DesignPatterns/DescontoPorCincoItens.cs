@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns
 {
-    public class DescontoPorCincoItens : Desconto
+    public class DescontoPorCincoItens : TemplateDeDescontoCondicional
     {
-        public Desconto Proximo { get; set; }
-        public double Desconta(Orcamento orcamento)
+        protected override double AplicarDescontoNo(Orcamento orcamento)
         {
-            if (orcamento.Itens.Count() > 5)
-            {
-                return orcamento.Valor * 0.1;
-            }
+            return orcamento.Valor * 0.1;
+        }
 
-            return Proximo.Desconta(orcamento);
+        protected override bool DeveAplicarDescontoNo(Orcamento orcamento)
+        {
+            return orcamento.Itens.Count() > 5;
         }
     }
 }

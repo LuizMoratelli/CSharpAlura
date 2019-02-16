@@ -1,0 +1,19 @@
+﻿**Strategy** Interface
+
+"ICMS".Equals(imposto) é melhor do que imposto.Equals("ICMS") pois caso o imposto for nulo, no ultimo exemplo, resultará em erro.
+
+Coesão da Classe = Responsabilidade exclusiva!
+	Muitos ifs quebram a coesão
+		Apenas trocar os ifs por métodos não resolve, pois sempre que for feita uma subclasse nova será preciso mudar o IF
+		Separa em classes que implementam uma interface geral para que possam ser usadas como parametro (Imposto) para um método geral (Calcula)
+	Separar calculos em Classes ajuda na coesão
+		double icms = orcamento.Valor * 0.1; -> Class ICMS{ Calcular ICMS(Orcamento orcamento) return orcamento.Valor * 0.1 }
+
+//Mais Informações
+O padrão Strategy é muito útil quando temos um conjunto de algoritmos similares, e precisamos alternar entre eles em diferentes pedaços da aplicação. 
+No exemplo do vídeo, temos diferentes maneira de calcular o imposto, e precisamos alternar entre elas.
+
+O Strategy nos oferece uma maneira flexível para escrever diversos algoritmos diferentes, e de passar esses algoritmos para classes clientes que precisam deles. 
+Esses clientes desconhecem qual é o algoritmo "real" que está sendo executado, e apenas manda o algoritmo rodar. 
+Isso faz com que o código da classe cliente fique bastante desacoplado das implementações concretas de algoritmos, 
+possibilitando assim com que esse cliente consiga trabalhar com N diferentes algoritmos sem precisar alterar o seu código.

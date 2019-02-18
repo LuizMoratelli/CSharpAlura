@@ -67,5 +67,30 @@ namespace TDD
 
             Assert.AreEqual(3800, ultimoLance.Valor, 0.0001);
         }
+
+        [TestMethod]
+        public void DeveAceitarDobrarOLanceDeUsuariosDiferentes()
+        {
+            Leilao leilao = new Leilao("Macbook Pro 15");
+            Usuario steveJobs = new Usuario("Steve Jobs");
+            Usuario billGates = new Usuario("Bill Gates");
+
+            leilao.Propoe(new Lance(steveJobs, 2000));
+            leilao.Propoe(new Lance(billGates, 3000));
+            leilao.DobraLance(steveJobs);
+
+            Assert.AreEqual(4000, leilao.Lances[2].Valor, 0.00001);
+        }
+
+        [TestMethod]
+        public void NaoDeveAceitarDobrarOLanceDoMesmoUsuario()
+        {
+            Leilao leilao = new Leilao("Macbook Pro 15");
+            Usuario steveJobs = new Usuario("Steve Jobs");
+
+            leilao.DobraLance(steveJobs);
+
+            Assert.AreEqual(0, leilao.Lances.Count);
+        }
     }
 }

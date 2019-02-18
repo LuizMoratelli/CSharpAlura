@@ -2,27 +2,38 @@
 using LeilaoTDD;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 //https://docs.microsoft.com/pt-br/visualstudio/test/getting-started-with-unit-testing?view=vs-2017
+//https://stackoverflow.com/questions/14461737/visual-studio-unit-testing-setup-and-teardown
 
 namespace TDD
 {
     [TestClass]
     public class AvaliadorTest
     {
+        private Avaliador leiloeiro;
+        private Usuario joao;
+        private Usuario jose;
+        private Usuario maria;
+
+        //Sempre executa antes dos métodos de teste
+        [TestInitialize]
+        public void CriaAvaliador()
+        {
+            leiloeiro = new Avaliador();
+            joao = new Usuario("Joao");
+            jose = new Usuario("Jose");
+            maria = new Usuario("Maria");
+        }
+
         [TestMethod]
         public void DeveEntenderLancesEmOrdemCrescente()
         {
             //cenario
-            Usuario joao = new Usuario("Joao");
-            Usuario jose = new Usuario("Jose");
-            Usuario maria = new Usuario("Maria");
-
             Leilao leilao = new Leilao("Playstation 3 Novo");
             leilao.Propoe(new Lance(joao, 300));
             leilao.Propoe(new Lance(jose, 400));
             leilao.Propoe(new Lance(maria, 250));
 
             //acao
-            Avaliador leiloeiro = new Avaliador();
             leiloeiro.Avalia(leilao);
 
             //validacao
@@ -38,16 +49,11 @@ namespace TDD
         [TestMethod]
         public void DeveCalcularAMedia()
         {
-            Usuario joao = new Usuario("Joao");
-            Usuario jose = new Usuario("Jose");
-            Usuario maria = new Usuario("Maria");
-
             Leilao leilao = new Leilao("Playstation 3 Novo");
             leilao.Propoe(new Lance(joao, 300));
             leilao.Propoe(new Lance(jose, 400));
             leilao.Propoe(new Lance(maria, 500));
 
-            Avaliador leiloeiro = new Avaliador();
             leiloeiro.Avalia(leilao);
 
             double mediaEsperada = 400;
@@ -57,12 +63,10 @@ namespace TDD
         [TestMethod]
         public void DeveEntenderLeilaoComApenasUmLance()
         {
-            Usuario joao = new Usuario("Joao");
             Leilao leilao = new Leilao("Playstation 3 Novo");
 
             leilao.Propoe(new Lance(joao, 1000));
 
-            Avaliador leiloeiro = new Avaliador();
             leiloeiro.Avalia(leilao);
 
             Assert.AreEqual(1000, leiloeiro.MaiorLance, 0.0001);
@@ -73,16 +77,14 @@ namespace TDD
         [TestMethod]
         public void DeveEncontrarOsTresMaioresLances()
         {
-            Usuario joao = new Usuario("Joao");
-            Usuario maria = new Usuario("maria");
-            Leilao leilao = new Leilao("Playstation 3 Novo");
+            // Padrão Teste Data Builder
+            Leilao leilao = new CriadorDeLeilao().Para("Playstation")
+                .Lance(joao, 100)
+                .Lance(maria, 200)
+                .Lance(joao, 300)
+                .Lance(maria, 400)
+                .Constroi();
 
-            leilao.Propoe(new Lance(joao, 100));
-            leilao.Propoe(new Lance(maria, 200));
-            leilao.Propoe(new Lance(joao, 300));
-            leilao.Propoe(new Lance(maria, 400));
-
-            Avaliador leiloeiro = new Avaliador();
             leiloeiro.Avalia(leilao);
 
             //Sempre que for lista, verificar o conteudo e tamanho
@@ -92,6 +94,15 @@ namespace TDD
             Assert.AreEqual(400, maiores[0].Valor, 0.0001);
             Assert.AreEqual(300, maiores[1].Valor, 0.0001);
             Assert.AreEqual(200, maiores[2].Valor, 0.0001);
+        }
+
+        [TestMethod]
+        //Esperará tal tipo de exceção
+        [ExpectedException(typeof(Exception))]
+        public void NaoDeveAvaliarLeiloesSemNenhumLance()
+        {
+            Leilao leilao = new CriadorDeLeilao().Para("Geladeira").Constroi();
+            leiloeiro.Avalia(leilao);
         }
     }
 }

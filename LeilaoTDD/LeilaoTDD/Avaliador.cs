@@ -15,6 +15,8 @@ namespace LeilaoTDD
 
         public void Avalia(Leilao leilao)
         {
+            if (leilao.Lances.Count == 0) throw new Exception("Um leilão deve possuir pelo menos um lance!");
+
             foreach (Lance lance in leilao.Lances)
             {
                 if (lance.Valor > maiorDeTodos) maiorDeTodos = lance.Valor;

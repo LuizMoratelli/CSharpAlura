@@ -177,6 +177,20 @@ namespace xadrez
                 xeque = false;
             }
 
+            Peca p = Tab.GetPeca(destino);
+            //#jogadaespecial Promocao
+            if (p is Peao)
+            {
+                if ((p.CorAtual == Cor.Branca && destino.Linha == 0) || p.CorAtual == Cor.Preta && destino.Linha == 7) 
+                {
+                    p = Tab.RetirarPeca(destino);
+                    pecas.Remove(p);
+                    Peca dama = new Dama(Tab, p.CorAtual);
+                    Tab.ColocarPeca(dama, destino);
+                    pecas.Add(dama);
+                }
+            }
+
             if (TesteXequeMate(adversaria(JogadorAtual))) Terminada = true;
             else
             {
@@ -184,7 +198,6 @@ namespace xadrez
                 MudaJogador();
             }
 
-            Peca p = Tab.GetPeca(destino);
             //#jogadaespecial En Passant
             if (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
             {
